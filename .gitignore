@@ -1,5 +1,5 @@
 scalariform.jar
-build/
+#build/
 tmp_bismo/*
 *.jou
 ### Project Specific stuff
@@ -294,7 +294,8 @@ Temporary Items
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
-build/
+build/2x64x2/PYNQU96/*
+build/2x64x2/*/hw/*
 DerivedData
 
 ## Various settings
