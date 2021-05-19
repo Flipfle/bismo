@@ -30,7 +30,7 @@ using namespace std;
 
 class VerilatedTesterRegDriver : public WrapperRegDriver {
 public:
-  VerilatedTesterRegDriver() {m_freePtr = 0; m_time = 0; Verilated::traceEverOn(true); Verilated::debug(2);}
+  VerilatedTesterRegDriver() {m_freePtr = 0; m_time = 0; Verilated::traceEverOn(true); }// Verilated::debug(2);}
 
   virtual void attach(const char * name) {
     m_inst = new VTesterWrapper();

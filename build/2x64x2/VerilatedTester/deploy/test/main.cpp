@@ -48,11 +48,17 @@ int main(int argc, char const *argv[]) {
       benchmark_gemm_batch();
     } else if(argv[1][0] == 't') {
       bool all_OK = true;
+      cout << "PM: INIT" << endl;
       bismo_rt::init();
+      cout << "PM: HWCFG" << endl;
       bismo_rt::HardwareConfig hwcfg = bismo_rt::getHardwareConfig();
+      cout << "PM: TEST1" << endl;
       all_OK &= bismo_rt::selftest_shared_buffer();
+      cout << "PM: TEST2" << endl;
       all_OK &= bismo_rt::selftest_matrix();
+      cout << "PM: TEST3" << endl;
       all_OK &= bismo_rt::selftest_p2s();
+      cout << "PM: DEINIT" << endl;
       bismo_rt::deinit();
       // following tests call init/deinit themselves
       all_OK &= test_binary_onchip_onetile(hwcfg);

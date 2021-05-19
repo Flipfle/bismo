@@ -1,13 +1,12 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Symbol table internal header
 //
-// Internal details; most calling programs do not need this header,
-// unless using verilator public meta comments.
+// Internal details; most calling programs do not need this header
 
-#ifndef VERILATED_VTESTERWRAPPER__SYMS_H_
-#define VERILATED_VTESTERWRAPPER__SYMS_H_  // guard
+#ifndef _VTesterWrapper__Syms_H_
+#define _VTesterWrapper__Syms_H_
 
-#include "verilated_heavy.h"
+#include "verilated.h"
 
 // INCLUDE MODULE CLASSES
 #include "VTesterWrapper.h"
@@ -19,19 +18,19 @@ class VTesterWrapper__Syms : public VerilatedSyms {
     // LOCAL STATE
     const char* __Vm_namep;
     bool __Vm_activity;  ///< Used by trace routines to determine change occurred
-    uint32_t __Vm_baseCode;  ///< Used by trace routines when tracing multiple models
     bool __Vm_didInit;
     
     // SUBCELL STATE
     VTesterWrapper*                TOPp;
     
     // CREATORS
-    VTesterWrapper__Syms(VerilatedContext* contextp, VTesterWrapper* topp, const char* namep);
-    ~VTesterWrapper__Syms();
+    VTesterWrapper__Syms(VTesterWrapper* topp, const char* namep);
+    ~VTesterWrapper__Syms() {}
     
     // METHODS
     inline const char* name() { return __Vm_namep; }
+    inline bool getClearActivity() { bool r=__Vm_activity; __Vm_activity=false; return r; }
     
-} VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
+} VL_ATTR_ALIGNED(64);
 
-#endif  // guard
+#endif // guard

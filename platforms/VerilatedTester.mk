@@ -29,7 +29,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERILATOR_SRC_DIR ?= /tools/verilator/include
+VERILATOR_SRC_DIR ?= /home/ulnor/Dokumente/micro_Kernel_project/verilator-3.926/include
 
 
 $(BUILD_DIR_DEPLOY)/verilog/verilated: $(HW_TO_SYNTH)
@@ -37,7 +37,7 @@ $(BUILD_DIR_DEPLOY)/verilog/verilated: $(HW_TO_SYNTH)
 #	cp -rf $(BUILD_DIR_VERILOG)/* $(BUILD_DIR_DEPLOY)/verilog; 
 #	cp -rf $(VERILOG_SRC_DIR)/* $(BUILD_DIR_DEPLOY)/verilog; 
 	cd $(BUILD_DIR_DEPLOY)/verilog; \
-	/tools/verilator/bin/verilator -Iother-verilog --cc --prof-cfuncs TesterWrapper.v -Wno-assignin -Wno-fatal -Wno-lint -Wno-style -Wno-COMBDLY -Wno-STMTDLY --Mdir verilated --trace; \
+	~/.local/bin/verilator -Iother-verilog --cc --prof-cfuncs TesterWrapper.v -Wno-assignin -Wno-fatal -Wno-lint -Wno-style -Wno-COMBDLY -Wno-STMTDLY --Mdir verilated --trace; \
 	cp -rf $(VERILATOR_SRC_DIR)/verilated.cpp $(BUILD_DIR_DEPLOY)/verilog/verilated; \
 	cp -rf $(VERILATOR_SRC_DIR)/verilated_vcd_c.cpp $(BUILD_DIR_DEPLOY)/verilog/verilated;
 
