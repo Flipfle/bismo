@@ -29,14 +29,15 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERILATOR_SRC_DIR ?= /usr/share/verilator/include
+VERILATOR_SRC_DIR ?= /tools/verilator/include
+
 
 $(BUILD_DIR_DEPLOY)/verilog/verilated: $(HW_TO_SYNTH)
-	mkdir -p $(BUILD_DIR_DEPLOY)/verilog; \
-	cp -rf $(BUILD_DIR_VERILOG)/* $(BUILD_DIR_DEPLOY)/verilog; \
-	cp -rf $(VERILOG_SRC_DIR)/* $(BUILD_DIR_DEPLOY)/verilog; \
+	mkdir -p $(BUILD_DIR_DEPLOY)/verilog; 
+#	cp -rf $(BUILD_DIR_VERILOG)/* $(BUILD_DIR_DEPLOY)/verilog; 
+#	cp -rf $(VERILOG_SRC_DIR)/* $(BUILD_DIR_DEPLOY)/verilog; 
 	cd $(BUILD_DIR_DEPLOY)/verilog; \
-	verilator -Iother-verilog --cc TesterWrapper.v -Wno-assignin -Wno-fatal -Wno-lint -Wno-style -Wno-COMBDLY -Wno-STMTDLY --Mdir verilated --trace; \
+	/tools/verilator/bin/verilator -Iother-verilog --cc --prof-cfuncs TesterWrapper.v -Wno-assignin -Wno-fatal -Wno-lint -Wno-style -Wno-COMBDLY -Wno-STMTDLY --Mdir verilated --trace; \
 	cp -rf $(VERILATOR_SRC_DIR)/verilated.cpp $(BUILD_DIR_DEPLOY)/verilog/verilated; \
 	cp -rf $(VERILATOR_SRC_DIR)/verilated_vcd_c.cpp $(BUILD_DIR_DEPLOY)/verilog/verilated;
 
@@ -55,9 +56,10 @@ sw: $(BUILD_DIR_HWDRV)/$(HW_SW_DRIVER)
 	cp -rf $(HLS_SIM_INCL)/* $(BUILD_DIR_DEPLOY)/hls_include;
 
 emu: rtlib_emu
-	cd $(BUILD_DIR_DEPLOY); \
-	sh compile_testapp.sh; \
-	LD_LIBRARY_PATH=$(BUILD_DIR_DEPLOY):$(LD_LIBRARY_PATH) ./testapp t;
+	cd $(BUILD_DIR_DEPLOY) \ 
+	sh compile_testapp.sh \ 
+	export LD_LIBRARY_PATH=$(BUILD_DIR_DEPLOY) 
+#	./testapp t
 
 $(BUILD_DIR_DEPLOY)/libbismo_rt.so: hw sw script
 	cd $(BUILD_DIR_DEPLOY); \

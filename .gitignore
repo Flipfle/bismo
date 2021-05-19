@@ -1,5 +1,6 @@
 scalariform.jar
 build/
+tmp_bismo/*
 *.jou
 ### Project Specific stuff
 test_run_dir/*
