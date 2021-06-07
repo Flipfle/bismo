@@ -7,7 +7,7 @@ using namespace std;
 #include "wrapperregdriver.h"
 #include "VTesterWrapper.h"
 
-
+#define TRACE
 
 #ifdef DEBUG
 #define __TESTERDRIVER_DEBUG_PRINT(x) (cout << x << endl)
