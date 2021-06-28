@@ -29,7 +29,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERILATOR_SRC_DIR ?= /home/ulnor/Dokumente/micro_Kernel_project/verilator-3.926/include
+VERILATOR_SRC_DIR ?= /home/ulnor/Dokumente/micro_Kernel_project/02_software/verilator-3.926/include
 
 
 $(BUILD_DIR_DEPLOY)/verilog/verilated: $(HW_TO_SYNTH)
@@ -52,8 +52,8 @@ sw: $(BUILD_DIR_HWDRV)/$(HW_SW_DRIVER)
 	mkdir -p $(BUILD_DIR_DEPLOY)/hls_include; \
 	cp -rf $(BUILD_DIR_HWDRV)/* $(BUILD_DIR_DEPLOY)/driver/; \
 	cp -rf $(APP_SRC_DIR)/* $(BUILD_DIR_DEPLOY)/test/;
-	cp -rf $(RTLIB_SRC_DIR)/* $(BUILD_DIR_DEPLOY)/rtlib; \
-	cp -rf $(HLS_SIM_INCL)/* $(BUILD_DIR_DEPLOY)/hls_include;
+	cp -rf $(RTLIB_SRC_DIR)/* $(BUILD_DIR_DEPLOY)/rtlib; 
+	# cp -rf $(HLS_SIM_INCL)/* $(BUILD_DIR_DEPLOY)/hls_include;
 
 emu: rtlib_emu
 	cd $(BUILD_DIR_DEPLOY) \ 
@@ -62,7 +62,7 @@ emu: rtlib_emu
 #	./testapp t
 
 $(BUILD_DIR_DEPLOY)/libbismo_rt.so: hw sw script
-	cd $(BUILD_DIR_DEPLOY); \
+	cd $(BUILD_DIR_DEPLOY); 
 	sh compile_rtlib.sh;
 
 rtlib_emu: $(BUILD_DIR_DEPLOY)/libbismo_rt.so

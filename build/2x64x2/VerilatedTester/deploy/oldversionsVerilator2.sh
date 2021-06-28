@@ -51,7 +51,7 @@ then
         if [[ -f /home/ulnor/Dokumente/micro_Kernel_project/forked_bismo/bismo/build/2x64x2/VerilatedTester/deploy/testapp ]]
         then  
             echo "-- execute app"
-            export LD_LIBRARY_PATH=/home/ulnor/Dokumente/micro_Kernel_project/forked_bismo/bismo/build/2x64x2/VerilatedTester/deploy
+            export LD_LIBRARY_PATH=/home/ulnor/Dokumente/micro_Kernel_project/00_Repos/forked_bismo/bismo/build/2x64x2/VerilatedTester/deploy
             ./testapp t > $LOGFILE
             echo "DONE"
         else

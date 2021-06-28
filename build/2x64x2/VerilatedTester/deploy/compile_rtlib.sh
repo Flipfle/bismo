@@ -29,6 +29,6 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #!/bin/bash
-VERILATOR_SRC_DIR="/home/ulnor/Dokumente/micro_Kernel_project/verilator-3.926/include"
+VERILATOR_SRC_DIR="/home/ulnor/Dokumente/micro_Kernel_project/02_software/verilator-3.926/include"
 
 g++ -std=c++11 -DVL_DEBUG -march=native -O0 -Wno-int-to-pointer-cast -I$VERILATOR_SRC_DIR -Iverilog/verilated -I./hls_include -I./driver -I./test -fPIC rtlib/*.cpp driver/*.cpp verilog/verilated/*.cpp -shared -o libbismo_rt.so
